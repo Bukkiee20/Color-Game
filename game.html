@@ -8,20 +8,26 @@
     <link rel="stylesheet" href="game.css">
 </head>
 <body>
+    <div class="topheader">
     <h1>Guess the Color!!!</h1>
+    </div>
+    <button class="button" id="easyButton">Easy</button>
+    <button class= "button" id="hardButton" class="selected">Hard</button>
+    
     <h2 id="rgb"></h2>
     <div class="container">
        <div class="circle" id="circle1"></div>
        <div class="circle" id="circle2"></div>
        <div class="circle" id="circle3"></div>
-       <!-- <div class="circle" id="circle4"></div>
+       <div class="circle" id="circle4"></div>
        <div class="circle" id="circle5"></div>
-       <div class="circle" id="circle6"></div> -->
+       <div class="circle" id="circle6"></div>
        
        
     </div>
     <div class="replay">
-        <button class="btn" type="submit">Replay</button>
+        <button class="btn" id="replay">Replay</button>
     </div>
+    <script src="game.js"></script>
 </body>
 </html>
