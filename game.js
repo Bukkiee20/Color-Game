@@ -68,13 +68,15 @@ for(var i= 0; i < circles.length; i++){
 
         var clickedColor= this.style.backgroundColor;
         console.log(clickedColor,pickedColor);
-        if(clickedColor===pickedColor){
-            message.textContent="Correct!";
-            replay.textContent="Play Again";
+
+        if(clickedColor === pickedColor){
+            message.textContent="CORRECT!";
+            replay.textContent="PLAY AGAIN";
+            changeColors(pickedColor);
         }
         else{
-            this.style.backgroundColor= "wine";
-            message.textContent="Try Again";
+            this.style.backgroundColor= "black";
+            message.textContent="TRY AGAIN";
     
         }
     });
@@ -83,6 +85,7 @@ for(var i= 0; i < circles.length; i++){
 function changeColors(colorz){
     for(var i= 0; i < circles.length; i++){
         circles[i].style.backgroundColor = colorz;
+        h1.style.backgroundColor= colorz;
     }
 }
 
