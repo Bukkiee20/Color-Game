@@ -1,11 +1,13 @@
 var numCircles=6;
-var colors= generateRandomColors(numSquares);
-var pickedColor = randomColorG();
 var circles= document.querySelectorAll(".circle");
+var rgb= document.querySelector("#rgb");
+var h1= document.querySelector("h1");
 var easyBtn= document.querySelector("#easyButton");
 var hardBtn= document.querySelector("#hardButton");
+var colors= generateRandomColors(numCircles);
+var pickedColor = randomColorG();
 var replay=  document.querySelector("#replay");
-var rgb= document.querySelector("#rgb");
+var message= document.querySelector("#msg");
 
 easyBtn.addEventListener("click", function(){
     hardBtn.classList.remove("selected");
@@ -19,7 +21,7 @@ easyBtn.addEventListener("click", function(){
 
     for(var i= 0; i < circles.length; i++){
         if(colors[i]){
-            circles[i].styles.backgroundColor = colors[i];
+            circles[i].style.backgroundColor = colors[i];
         }
         else{
             circles[i].style.display= "none";
@@ -38,7 +40,7 @@ hardBtn.addEventListener("click", function(){
     rgb.textContent= pickedColor;
 
     for(var i= 0; i < circles.length; i++){
-        circles[i].styles.backgroundColor = colors[i];
+        circles[i].style.backgroundColor = colors[i];
         circles[i].style.display= "block";
         
     }
@@ -50,20 +52,59 @@ replay.addEventListener("click", function(){
     pickedColor = randomColorG();
     rgb.textContent= pickedColor;
     replay.textContent= "Replay";
-
+    message.textContent= "";
+    
+    for(var i= 0; i < circles.length; i++){
+        circles[i].style.backgroundColor = colors[i];
+    }
+    h1.style.backgroundColor="steelblue";
 });
 
-// color=document.getElementById("rgb");
-// clicky=document.getElementsByClassName("circle");
+rgb.textContent= pickedColor;
 
-// var x= Math.floor(Math.random() * 256);
-// var y= Math.floor(Math.random() * 256);
-// var z= Math.floor(Math.random() * 256);
+for(var i= 0; i < circles.length; i++){
+    circles[i].style.backgroundColor = colors[i];
+    circles[i].addEventListener("click", function(){
 
-// var circle= document.querySelectorAll(".circle");
-// circle.addEventListener("click", function(){
-//     var rgbColor= "rgb("+ x + ',' + y + ','+ z + ")";
-//     color.textContent= "Background Color: " + rgbColor;
-//     circle.style.backgroundColor= rgbColor;
-//     // alert("clicked");
-// })
+        var clickedColor= this.style.backgroundColor;
+        console.log(clickedColor,pickedColor);
+        if(clickedColor===pickedColor){
+            message.textContent="Correct!";
+            replay.textContent="Play Again";
+        }
+        else{
+            this.style.backgroundColor= "wine";
+            message.textContent="Try Again";
+    
+        }
+    });
+}
+
+function changeColors(colorz){
+    for(var i= 0; i < circles.length; i++){
+        circles[i].style.backgroundColor = colorz;
+    }
+}
+
+function randomColorG(){
+    var random= Math.floor(Math.random() * colors.length);
+    return colors[random];
+}
+
+function generateRandomColors(genColor){
+    var arr= [];
+ 
+    for(var i= 0; i < genColor; i++){
+        arr.push(randomColor());
+    }
+
+    return arr;
+}
+
+function randomColor(){
+    var x= Math.floor(Math.random() * 256);
+    var y= Math.floor(Math.random() * 256);
+    var z= Math.floor(Math.random() * 256);
+
+    return "RGB("+ x + ',' + y + ','+ z + ")";
+}
