@@ -1,6 +1,7 @@
 var numCircles=6;
+var header= document.getElementById("header");
 var circles= document.querySelectorAll(".circle");
-var rgb= document.querySelector("#rgb");
+var rgb= document.getElementById("rgb");
 var h1= document.querySelector("h1");
 var easyBtn= document.querySelector("#easyButton");
 var hardBtn= document.querySelector("#hardButton");
@@ -20,8 +21,8 @@ easyBtn.addEventListener("click", function(){
     rgb.textContent= pickedColor;
 
     for(var i= 0; i < circles.length; i++){
-        if(colors[i]){
-            circles[i].style.backgroundColor = colors[i];
+        if (colors[i]) {
+            circles[i].style.background = colors[i];
         }
         else{
             circles[i].style.display= "none";
@@ -51,41 +52,46 @@ replay.addEventListener("click", function(){
 
     pickedColor = randomColorG();
     rgb.textContent= pickedColor;
-    replay.textContent= "Replay";
+    replay.textContent= "New Color";
     message.textContent= "";
     
     for(var i= 0; i < circles.length; i++){
-        circles[i].style.backgroundColor = colors[i];
+        circles[i].style.background = colors[i];
     }
-    h1.style.backgroundColor="steelblue";
+    header.style.backgroundColor= "rgb(18, 51, 79)";
 });
 
 rgb.textContent= pickedColor;
 
-for(var i= 0; i < circles.length; i++){
-    circles[i].style.backgroundColor = colors[i];
+
+for(var i= 0; i < circles.length; i++) {
+    circles[i].style.background = colors[i];
     circles[i].addEventListener("click", function(){
 
         var clickedColor= this.style.backgroundColor;
         console.log(clickedColor,pickedColor);
+        console.log(clickedColor === pickedColor);
 
         if(clickedColor === pickedColor){
             message.textContent="CORRECT!";
             replay.textContent="PLAY AGAIN";
-            changeColors(pickedColor);
+            changeColors(clickedColor);
+            header.style.background= clickedColor;
+            header.style.width= "100%";
+
         }
         else{
             this.style.backgroundColor= "black";
             message.textContent="TRY AGAIN";
     
         }
-    });
+    })
 }
 
 function changeColors(colorz){
     for(var i= 0; i < circles.length; i++){
         circles[i].style.backgroundColor = colorz;
-        h1.style.backgroundColor= colorz;
+        
     }
 }
 
@@ -105,9 +111,13 @@ function generateRandomColors(genColor){
 }
 
 function randomColor(){
-    var x= Math.floor(Math.random() * 256);
-    var y= Math.floor(Math.random() * 256);
-    var z= Math.floor(Math.random() * 256);
+var r= Math.floor(Math.random() * 256);
 
-    return "RGB("+ x + ',' + y + ','+ z + ")";
+var g= Math.floor(Math.random() * 256);
+
+var b= Math.floor(Math.random() * 256);
+
+return "rgb(" + r +", " + g + ", " + b +")";
 }
+
+

@@ -17,7 +17,7 @@ body{
     flex-direction: column;
     width: 100%;
 }
-.header{
+#header{
     font-family: cursive;
     background-color: rgb(18, 51, 79);
     width: 100%;
@@ -66,5 +66,4 @@ h2{
     width: 200px;
     height: 200px;
     border-radius:10% 30%;
-    transition: backgrond .5s;
 }
