@@ -2,7 +2,6 @@ var numCircles=6;
 var header= document.getElementById("header");
 var circles= document.querySelectorAll(".circle");
 var rgb= document.getElementById("rgb");
-var h1= document.querySelector("h1");
 var easyBtn= document.querySelector("#easyButton");
 var hardBtn= document.querySelector("#hardButton");
 var colors= generateRandomColors(numCircles);
