@@ -34,6 +34,9 @@ h1{
 h2{
     font-size: 35px;
 }
+#msg{
+    text-transform: uppercase;
+}
 .replay{
     background-color: white;
     color: black;

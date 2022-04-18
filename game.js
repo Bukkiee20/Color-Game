@@ -51,7 +51,7 @@ replay.addEventListener("click", function(){
 
     pickedColor = randomColorG();
     rgb.textContent= pickedColor;
-    replay.textContent= "New Color";
+    replay.textContent= "REPLAY";
     message.textContent= "";
     
     for(var i= 0; i < circles.length; i++){
